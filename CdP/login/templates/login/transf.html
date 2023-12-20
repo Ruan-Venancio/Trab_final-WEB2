@@ -1,11 +1,17 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'login/css/stylle.css' %}">
 </head>
 <body>
+    <section>
+        <img src="{% static 'login/img/WhatsApp Image 2023-12-15 at 10.09.04.jpeg' %}" alt="">
+    </section>
     <form action="{% url 'transferencia' %}" method="POST">
         <input type="text" name="chave-pix" placeholder="Digite a chave pix">
         <input type="text" name="dinheiro" placeholder="R$0,00"> 

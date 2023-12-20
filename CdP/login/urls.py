@@ -20,6 +20,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='login'),
-    path('/transferencia', views.transf, name='transferencia'),
-    path('/cadastro', views.casdastrar, name='cadastro')
+    path('transferencia/<str:saldo>', views.transf, name='transferencia'),
+    path('cadastro', views.casdastrar, name='cadastro'),
 ]

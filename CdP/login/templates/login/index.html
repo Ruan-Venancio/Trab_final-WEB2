@@ -6,10 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{% url 'login' %}" method="POST">{% csrf_token %}
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
         <input type="text" name="matricula" placeholder="Digite sua matrícula">
         <input type="submit" value="Logar">
     </form>
-    <a href=""></a>
+    <a href="{% url 'cadastro' %}">Cadastra-se</a>
 </body>
 </html>

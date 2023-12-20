@@ -10,13 +10,10 @@
 </head>
 <body>
     <main>
-        <section>
-            <img src="{% static 'login/img/WhatsApp Image 2023-12-15 at 10.09.04.jpeg' %}" alt="">
-        </section>
-        <form action="{% url 'cadastro' % }" method="POST">{% csrf_token %}
-            <input type="text" name="email" placeholder="Digite seu email">
-            <input type="number" name="celular" placeholder="Digite seu celular">
-            <input type="text" name="senha" placeholder="digite uma senha">
+        <form action="{% url 'cadastro' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="matricula" placeholder="Digite sua matrícula">
+            <input type="text" name="chave-pix" placeholder="digite sua chave do pix">
             <input type="submit" value="Cadastrar">
         </form>
     </main>

@@ -20,24 +20,36 @@ def casdastrar(request):
 def index(request):
     if request.method == "POST":
         
-        matricula = Conta.objects.filter(matricula=request.POST['matricula'])
+        conta = Conta.objects.filter(matricula=request.POST['matricula'])
 
-        if matricula.exists():
-            saldo = matricula[0].saldo
-            return redirect('transferencia', saldo=saldo)
+        if conta.exists():
+            c_matricula = conta[0].matricula
+            request.session['c_matricula'] = c_matricula
+            return redirect('transferencia')
         else:
             return render(request, 'login/index.html')
     else:
         return render(request, 'login/index.html')
 
-def transf(request, saldo):
-    print(saldo)
+def transf(request):
+    c_matricula = request.session.get('c_matricula')
+    l_conta = Conta.objects.filter(matricula=c_matricula)
+
     if request.method == "POST":
-        chave = Chave.objects.filter(decrição=request.POST['chave-pix'])
+        chave = Chave.objects.filter(descrição=request.POST['chave-pix'])
 
         if chave.exists():
             conta = (chave[0]).conta
-            conta.update(saldo=conta.saldo + request.POST['dinheiro'])
+            conta = Conta.objects.filter(matricula=conta.matricula)
+            
+            if float(request.POST['dinheiro']) <= l_conta[0].saldo:
+
+                conta.update(saldo=conta[0].saldo + float(request.POST['dinheiro']))
+                l_conta.update(saldo=l_conta[0].saldo - float(request.POST['dinheiro']))
+            
+                return render(request, "login/transf.html")
+            else:
+                return render(request, "login/transf.html")
         else:
             return render(request, "login/transf.html")
     else:

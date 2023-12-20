@@ -5,17 +5,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calanguim do PIX | área de transferencia</title>
     <link rel="stylesheet" href="{% static 'login/css/stylle.css' %}">
 </head>
 <body>
     <section>
         <img src="{% static 'login/img/WhatsApp Image 2023-12-15 at 10.09.04.jpeg' %}" alt="">
     </section>
+    <section>
+        <p>Agora envie o dinheiro para a chave: Calanguim@pix.com
+        </p>
+    </section>
     <form action="{% url 'transferencia' %}" method="POST">
+        {% csrf_token %}
         <input type="text" name="chave-pix" placeholder="Digite a chave pix">
         <input type="text" name="dinheiro" placeholder="R$0,00"> 
         <input type="submit" value="Transferir">
     </form>
+    <div>
+        <a href="{% url 'cadastro' %}" style=" margin-right: 20px; ">Cadastra-se</a>
+        <a href="{% url 'login' %}">login</a>
+    </div>
+    
 </body>
 </html>

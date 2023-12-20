@@ -5,17 +5,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Chaves PIX</title>
+    <title>Calanguim do PIX | Área de cadastro</title>
     <link rel="stylesheet" href="{% static 'login/css/stylle.css' %}">
 </head>
 <body>
-    <main>
-        <form action="{% url 'cadastro' %}" method="POST">
-            {% csrf_token %}
-            <input type="text" name="matricula" placeholder="Digite sua matrícula">
-            <input type="text" name="chave-pix" placeholder="digite sua chave do pix">
-            <input type="submit" value="Cadastrar">
-        </form>
-    </main>
+    <section>
+        <img src="{% static 'login/img/WhatsApp Image 2023-12-15 at 10.09.04.jpeg' %}" alt="">
+    </section>
+    <form action="{% url 'cadastro' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="matricula" placeholder="Digite sua matrícula">
+        <input type="text" name="chave-pix" placeholder="digite sua chave do pix">
+        <input type="submit" value="Cadastrar">
+    </form>
 </body>
 </html>
